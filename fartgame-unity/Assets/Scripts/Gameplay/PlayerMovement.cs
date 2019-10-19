@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float Speed;
+    public float Speed = 1f;
 
     void Update()
     {
-        var move = new Vector3(Input.GetAxis("horizontal"), 0f, Input.GetAxis("horizontal"));
+        var move = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         move *= Speed * Time.deltaTime;
         transform.Translate(move);
     }
