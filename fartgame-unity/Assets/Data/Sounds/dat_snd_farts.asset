@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7adf711c8980a4fbee067e1f1be339, type: 3}
+  m_Name: dat_snd_farts
+  m_EditorClassIdentifier: 
+  Id: fart_short
+  Clips:
+  - {fileID: 8300000, guid: 8be4525d7344ef44da6e3609a93b8a7e, type: 3}
+  - {fileID: 8300000, guid: 71a4a9d943996af4880dd883fe3df439, type: 3}
+  - {fileID: 8300000, guid: a89f4ad6ef69d9845b506ad8779a32ab, type: 3}
+  - {fileID: 8300000, guid: bc4e7ea9faa898844a8288a8fd10cf17, type: 3}
+  - {fileID: 8300000, guid: 1d5f59ac1df61ad4ca20a08f349c73ce, type: 3}
