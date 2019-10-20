@@ -6,6 +6,8 @@ using UnityEngine;
 public class FartBehaviour : MonoBehaviour
 {
     public FartSystem FartSystem;
+    public int initialFartParticleCount;
+    public int continuousFartParticleCount;
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +19,23 @@ public class FartBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Fart();
+            Fart(initialFartParticleCount);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            EmitFart(continuousFartParticleCount);
         }
     }
 
-
-    void Fart()
+    private void EmitFart(int amount)
     {
-        FartSystem.SpawnFart(this.gameObject);
+        FartSystem.SpawnFart(this.gameObject, amount);
+    }
+
+    void Fart(int amount)
+    {
         GetComponent<SoundBehaviour>().PlaySound("fart_short");
+        EmitFart(amount);
     }
 }

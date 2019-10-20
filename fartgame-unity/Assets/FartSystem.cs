@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 public class FartSystem : MonoBehaviour
@@ -19,13 +20,16 @@ public class FartSystem : MonoBehaviour
         RemoveFarts();
     }
 
-    public void SpawnFart(GameObject source)
+    public void SpawnFart(GameObject source, int amountOfParticlesToEmit)
     {
         var fart = Instantiate(fartPrefab);
         fart.transform.position = source.transform.position;
         fart.SetActive(true);
 
-        farts.Add(fart.GetComponent<Fart>());
+        Fart fartComponent = fart.GetComponent<Fart>();
+        fartComponent.particlesToEmit = amountOfParticlesToEmit;
+        fartComponent.Emit();
+        farts.Add(fartComponent);
     }
 
     void RemoveFarts()
