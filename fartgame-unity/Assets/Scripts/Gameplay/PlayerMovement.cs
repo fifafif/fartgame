@@ -3,16 +3,14 @@
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 1f;
+    public float RotationSpeed = 1f;
 
     void Update()
     {
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        move *= Speed * Time.deltaTime;
-        transform.Translate(move);
+        var move = Vector3.forward * Input.GetAxis("Vertical") * Speed * Time.deltaTime;
+        var rotation = Input.GetAxis("Horizontal") * RotationSpeed * Time.deltaTime;
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    GetComponent<SoundBehaviour>().PlaySound("fart_short");
-        //}
+        transform.Rotate(Vector3.up, rotation);
+        transform.Translate(move);
     }
 }
