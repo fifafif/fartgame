@@ -9,6 +9,8 @@ public class AIFartDetection : MonoBehaviour
     private float waitTimeLeftSec;
     private Agent agent;
 
+    private FartNotification notification;
+
     public class PotentialFarter
     {
         public Agent Agent;
@@ -21,6 +23,7 @@ public class AIFartDetection : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<Agent>();
+        notification = GetComponentInChildren<FartNotification>();
     }
 
     void Update()
@@ -45,7 +48,9 @@ public class AIFartDetection : MonoBehaviour
         {
             if (other == agent) continue;
 
-            if (agent.Distance(other) <= Radius)
+            var distance = agent.Distance(other);
+
+            if (distance <= Radius)
             {
                 potentails.Add(other);
             }
@@ -58,12 +63,14 @@ public class AIFartDetection : MonoBehaviour
         else
         {
             potentails.ForEach(a => RegisterPotentialFarter(a));
+            notification?.ShowNotification(FartNotification.Type.Smelled);
         }
     }
 
     private void FarterDiscovered(Agent farter)
     {
         Debug.Log("FARTER DISCOVERED! " + farter);
+        notification?.ShowNotification(FartNotification.Type.Discovered);
     }
 
     private void RegisterPotentialFarter(Agent potential)
